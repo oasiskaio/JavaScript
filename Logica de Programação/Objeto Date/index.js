@@ -1,0 +1,10 @@
+const date = new Date('2019-04-2 20:20:59');
+console.log(date.toDateString());
+console.log('dia', date.getDate());
+console.log('mes', date.getMonth());
+console.log('ano', date.getFullYear());
+console.log('hora', date.getHours());
+console.log('minutos', date.getMinutes());
+console.log('segundos', date.getSeconds());
+console.log('ms', date.getMilliseconds());
+console.log('Dia semana', date.getDay());
