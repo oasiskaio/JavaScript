@@ -25,6 +25,5 @@ funcaoArrow()
 const obj = {
     falar: function(){
         console.log("Estou falando...")
-    }
-};
+    }};
 obj.falar()
