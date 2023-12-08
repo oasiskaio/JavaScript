@@ -35,13 +35,13 @@ funcao4(4, undefined ,20)
 function funcao5({nome, sobrenome, idade}){
     console.log(nome, sobrenome, idade)
 }
-funcao({nome: "kaio", sobrenome: "xavier", idade: 19})
+funcao5({nome: "kaio", sobrenome: "xavier", idade: 19})
 
 // mandando parametros via desistruturação array
 function funcao6([valor1, valor2, valor3]){
     console.log(valor1, valor2, valor3)
 }
-funcao(["kaio", "xavier", 19])
+funcao6(["kaio", "xavier", 19])
 
 
 function Exemplo(operador, acumulador, ...numeros){
@@ -53,4 +53,5 @@ function Exemplo(operador, acumulador, ...numeros){
 }
 console.log(acumulador)
 }
+//     (operador="+", acumulador=0,...numero igual resto do parametro)
 Exemplo("+", 0, 30, 40, 60 , 70)

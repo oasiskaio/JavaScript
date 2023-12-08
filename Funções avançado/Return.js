@@ -1,16 +1,17 @@
-document.addEventListener('click', function(){
+/* document.addEventListener('click', function(){
     document.body.style.backgroundColor = 'red'
-});
+}); */
 
 /* 
 ###############################################
 */
 
 function criaPessoa(nome, sobrenome){
-    return {nome:  nome, sobrenome: sobrenome}
+    return {nome: nome, sobrenome: sobrenome}
 };
 p1 = criaPessoa("kaio", "Xavier")
-p2 = {nome: "qualquer", sobrenome: "qualquer"} /* a função acima é usada para criar isso */
+console.log(p1)
+p1_resumo = {nome: "qualquer", sobrenome: "qualquer"} /* a função acima é usada para criar isso */
 
 
 /* 
@@ -18,7 +19,7 @@ p2 = {nome: "qualquer", sobrenome: "qualquer"} /* a função acima é usada para
 */
 function falaFrase(comeco){
     function falaResto(resto){
-        return comeco + '' + resto;
+        return comeco + ' ' + resto;
     };
     return falaResto
 };
