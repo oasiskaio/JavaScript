@@ -13,7 +13,6 @@ p1 = criaPessoa("kaio", "Xavier")
 console.log(p1)
 p1_resumo = {nome: "qualquer", sobrenome: "qualquer"} /* a função acima é usada para criar isso */
 
-
 /* 
 ###############################################
 */
