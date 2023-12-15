@@ -18,15 +18,12 @@
               console.log(valor)
         },
         altura: a, 
-        peso: b,
-
+        peso: p,
         // get(abreviação de getter) faz a função ser tratada como atributo do objeto
-        get imc(){  jeto
+        get imc(){
             const indice = this.peso / (this.altura ** 2);
             return indice.toFixed(2);
-        }
-    
-    };
+        }};
 }
  const p1 = criaPessoa('Kaio', 'Xavier', 1.8, 80);
  console.log(p1.imc)

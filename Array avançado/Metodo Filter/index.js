@@ -7,7 +7,6 @@ const maior10 = numeros.filter((valor, indice, array) => {
 console.log(maior10)
 
 
-
 const pessoas = [
     {nome: 'kaio', idade: 19},
     {nome: 'maria', idade: 23},

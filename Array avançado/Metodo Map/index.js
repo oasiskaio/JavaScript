@@ -6,8 +6,6 @@ const dobro = numeros.map((valor) => valor  * 2)
 console.log(dobro)
 
 
-
-
 const pessoas = [
     {nome: 'kaio', idade: 19},
     {nome: 'maria', idade: 23},
