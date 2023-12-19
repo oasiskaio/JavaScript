@@ -6,9 +6,7 @@
     // este metedo só poderá ser usado dentro da função 
     const ID = 12345; 
     const metodoInterno = function(){
-
     }; 
-
     // Atributos ou metodos publicos, por causa de "this" apontando
     this.nome = nome;
     this.sobrenome = sobrenome;
