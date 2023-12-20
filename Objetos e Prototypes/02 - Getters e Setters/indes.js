@@ -15,8 +15,8 @@ function Produto(nome, preco, estoque){
                 throw new TypeError("Digite um valor number")
             }
             estoquePrivado = valor
-        }
-})}
+        }}
+        )}
 const p1 = new Produto('camiseta', 20, 3)
 p1.estoque = 400
 console.log(p1.estoque)
