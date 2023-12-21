@@ -16,7 +16,8 @@ servindo como modelo ou molde para futura produções.
 function Pessoa(nome, sobrenome){
     this.nome = nome;
     this.sobrenome = sobrenome;
-    this.nomeCompleto = () => "Original" + this.nome + ' ' + this.sobrenome // Metodo da classe
+//    this.nomeCompleto = () => "Original" + this.nome + ' ' + this.sobrenome // Metodo da classe
+
 }
 Pessoa.prototype.nomeCompleto = () => {
     return this.nome + ' ' + this.sobrenome;
@@ -27,4 +28,5 @@ const pessoa1 = new Pessoa('Kaio', 'Xavier'); // <- Pessoa = Função construtor
 const data = new Date() // <- Pessoa = Função construtora
 
 console.dir(pessoa1);
+console.log(pessoa1.nomeCompleto())
 console.dir(data);
