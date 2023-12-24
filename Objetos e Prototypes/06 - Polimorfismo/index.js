@@ -20,7 +20,18 @@ Conta.prototype.verSaldo = function(){
      `Saldo: R$${this.saldo.toFixed(2)}`
     );
 }
-
+Conta.prototype.transfere_valor = function(conta_destino, valor){
+        this.contaDestino = conta_destino;
+        if (this.saldo < valor){
+            console.log("Não existe saldo suficiente")
+            return;
+        }
+        else{
+           conta_destino.depositar(valor)
+           this.saldo -= valor
+           console.log("Transferencia Realizada")
+        }
+    }
 
 function ContaCorrente(agencia, conta, saldo, limite){
     Conta.call(this, agencia, conta, saldo);
@@ -49,3 +60,9 @@ const contacorrete = new ContaCorrente("nubank", 2222, 40, 30)
 const contapoupanca = new ContaPoupanca("pagbank", 2222, 40)
 contacorrete.sacar(70)
 contapoupanca.sacar(10)
+
+const conta1 = new ContaPoupanca("Brasil", 3333, 50)
+const conta2 = new ContaPoupanca("Eua", 4444, 60)
+conta1.transfere_valor(conta2, 20);
+conta1.verSaldo()
+conta2.verSaldo()
