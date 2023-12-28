@@ -59,7 +59,7 @@ ContaPoupanca.prototype.constructor = ContaPoupanca
 const contacorrete = new ContaCorrente("nubank", 2222, 40, 30)
 const contapoupanca = new ContaPoupanca("pagbank", 2222, 40)
 contacorrete.sacar(70)
-contapoupanca.sacar(10)
+contapoupanca.sacar(25)
 
 const conta1 = new ContaPoupanca("Brasil", 3333, 50)
 const conta2 = new ContaPoupanca("Eua", 4444, 60)
