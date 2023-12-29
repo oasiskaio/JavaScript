@@ -30,7 +30,6 @@ function criaProduto(nome){
         },
         set nome(valor){
             nome = valor.replace('coisa.', ' ')
-            nome = valor;
         }};
 }
 const p2 = criaProduto('camiseta');
