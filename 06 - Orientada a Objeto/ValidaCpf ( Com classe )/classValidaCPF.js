@@ -12,17 +12,21 @@ class ValidaCPF {
   éSequência() {
     return this.cpfLimpo.charAt(0).repeat(11) === this.cpfLimpo;
   }
+  /* 
+  charAt(0) é um método de strings em JavaScript que retorna o caractere na posição especificada (índice) da string.
+  .repeat(11): repeat é um método de strings que cria uma nova string repetindo a string original um número especificado de vezes.
+  */
 
   geraNovoCpf() {
-    const cpfSemDigitos = this.cpfLimpo.slice(0, -2);
-    const digito1 = ValidaCPF.geraDigito(cpfSemDigitos);
-    const digito2 = ValidaCPF.geraDigito(cpfSemDigitos + digito1);
-    this.novoCPF = cpfSemDigitos + digito1 + digito2;
+    const cpfSemDigitos = this.cpfLimpo.slice(0, -2); // slice metodo que retorna do indice 0 ate o final -2
+    const digito1 = ValidaCPF.geraDigito(cpfSemDigitos); // recebe xxx.xxx.xxx(9 digitos)  
+    const digito2 = ValidaCPF.geraDigito(cpfSemDigitos + digito1); // recebe cpf(9 digitos) + o digito gerado
+    this.novoCPF = cpfSemDigitos + digito1 + digito2;  // na teoria, tem que ser o valor do cpf inicial
   }
 
   static geraDigito(cpfSemDigitos) {
     let total = 0;
-    let reverso = cpfSemDigitos.length + 1;
+    let reverso = cpfSemDigitos.length + 1;  // recebe 9 + 1, então começa do 10
 
     for(let stringNumerica of cpfSemDigitos) {
       total += reverso * Number(stringNumerica);

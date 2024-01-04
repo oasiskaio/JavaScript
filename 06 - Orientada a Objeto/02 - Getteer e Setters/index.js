@@ -1,4 +1,4 @@
-const _velocidade = Symbol('velocidade');
+const _velocidade = Symbol('velocidade'); // cria um simbolo e atribui o valor para a constante _velocidade
 class Carro {
     constructor(nome){
         this.nome = nome;
@@ -26,4 +26,4 @@ class Carro {
 }
 const c1 = new Carro('Fusca');
 c1.velocidade = 44
-console.log(c1.velocidade)
+console.log(c1)
