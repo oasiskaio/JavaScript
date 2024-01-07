@@ -1,9 +1,9 @@
 const ul = document.getElementById('users')
 const url = 'https://jsonplaceholder.typicode.com/users'
 
-fetch(url)
-   .then((resp) => resp.json())
-   .then(function (data){
+fetch(url)  // Metodo ultilizado como promise
+   .then((resp) => resp.json()) // primeiro ele retorna os dados no formato json
+   .then(function (data){  // mostra na tela o arquivo json
         console.log(data)
         
         return data.map(function (user) {
