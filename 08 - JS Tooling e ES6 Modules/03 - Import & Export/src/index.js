@@ -1,5 +1,5 @@
 // import * as MeuModolo from './modulo1'  =>   importa tudo que foi exportado de uma vez
-import { nome as nome2, sobrenome, idade, soma, Pessoa } from './modulo1'
+import { nome as nome2, sobrenome, idade, Pessoa } from './modulo1'
 import Qualquernome from './modulo1';
 
 console.log(nome2, sobrenome, idade);

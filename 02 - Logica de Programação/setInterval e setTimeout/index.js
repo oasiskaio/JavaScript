@@ -8,11 +8,11 @@ function mostraHora() {
 // configura o intervalo de tempo para alguma função seja executada em determinado momento
 const timer = setInterval(function () {
     console.log(mostraHora())
-}, 1000);
+}, 5000);
 
 setTimeout(function() {
     clearInterval(timer)
-}, 3000);
+}, 6000);
 
 setTimeout(function(){
     console.log('Olá mundo!');

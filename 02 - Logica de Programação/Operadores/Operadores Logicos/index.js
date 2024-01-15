@@ -7,6 +7,7 @@
 
   const expressaoAnd = true && true && true;
   const expressaoOr = true || false;
+  console.log("Esta expressão é " + expressaoOr)
   
   const usuario = 'Kaio';
   const senha = '12345';

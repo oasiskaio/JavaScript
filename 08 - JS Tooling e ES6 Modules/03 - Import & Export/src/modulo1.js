@@ -14,5 +14,4 @@ export class Pessoa {
       this.nome3 = nomezao;
       this.sobrenome3 = empresa;  
     }
-    
 }
