@@ -22,3 +22,4 @@ const p2 = new Pessoa("julia", "oliveira");
 console.log(p1.nome)
 console.log(p2.sobrenome)
 p1.metodo();
+
