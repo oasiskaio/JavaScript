@@ -35,7 +35,7 @@ const p2 = {
 Object.setPrototypeOf(p2, p1)
 p2.aumento(30)
 console.log(p2)
-
+    
 
 const p3 = Object.create(Produto.prototype, {
     preco: {
