@@ -53,5 +53,3 @@ const p3 = Object.create(Produto.prototype, {
 })
 p3.aumento(30)
 console.log(p3)
-
-
