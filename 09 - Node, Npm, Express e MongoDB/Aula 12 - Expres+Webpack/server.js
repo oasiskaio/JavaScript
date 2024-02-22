@@ -2,7 +2,7 @@
 // npm i ejs
 const express = require('express');
 const app = express();
-const routes = require('./routes')
+const routes = require('./routes');
 const path = require('path');
 
 app.use( express.urlencoded( { extended: true } ));
@@ -16,7 +16,7 @@ app.set('view engine', 'ejs');
 // usa tudo que foi declarado nas routes.js
 app.use(routes)
 
-app.listen(4000, () => {
+app.listen(3000, () => {
     console.log('Acessar http://localhost:3000')
     console.log('Servidor executando na porta 3000')
 })
