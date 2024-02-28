@@ -3,7 +3,6 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose')
 
-// A conexão só vai occorrer quando a conexão emitir o "pronto"
 mongoose.connect(process.env.CONNECTIONSTRING)
   .then(() => { 
     console.log('Conectei a base de dados')
@@ -12,18 +11,16 @@ mongoose.connect(process.env.CONNECTIONSTRING)
   .catch(e => console.log(e));
 
 const session = require('express-session');
-const MongoStore = require('connect-mongo')(session);
+const MongoStore = require('connect-mongo');
 const flash = require('connect-flash');
 
 const routes = require('./routes');
 const path = require('path');
 const { middlewareGlobal } = require("./src/middlewares/middleware")
 
-
 app.use( express.urlencoded( { extended: true } ));
 app.use(express.static(path.resolve(__dirname, 'public')))
 
-//configurando a sessão que vai ser usada
 const sessionOptions = session({
   secret: 'testeClienteConexao',
   store: MongoStore.create({ mongoUrl: process.env.CONNECTIONSTRING}),
@@ -34,13 +31,11 @@ const sessionOptions = session({
     httpOnly: true
   }
 })
-// Usa as opções de sessao que foram criadas
-// cria mensagens rapidas para serem mostradas ao usuario sem quebra na memoria
+
 app.use(sessionOptions)
 app.use(flash(
 
 ))
-
 app.set('views', path.resolve(__dirname, 'src', 'views'))
 app.set('view engine', 'ejs');
 
@@ -48,7 +43,6 @@ app.use(middlewareGlobal);
 
 app.use(routes)
 
-// conexão a partir do pronto
 app.on('pronto', () => {
     app.listen(3000, () => {
     console.log('Acessar http://localhost:3000')
