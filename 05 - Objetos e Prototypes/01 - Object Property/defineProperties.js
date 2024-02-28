@@ -20,7 +20,7 @@ function Produto(nome, preco, estoque){
         value: preco,   // valor
         writable: false,  //valor n pode ser alterado
         configurable: true // pode ou não reconfigurar
-       },
+       }
     })
 }
 const p1 = new Produto('camiseta', 20, 3)
