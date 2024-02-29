@@ -1,0 +1,21 @@
+     <%- titulo %>
+
+<h1>
+     <%- titulo %>
+     <br>
+
+     <%
+      if(typeOf titulo.value !== 'undefined'){
+         <%=  titulo  %>
+      }else{
+        %<  O titulo não foi enviado. >%
+      }
+     %>
+
+     <%
+       numeros.forEach( num => {
+      <%= num %>
+     });  %>
+
+     <%= umaVariavelLocal %>
+    </h1>
