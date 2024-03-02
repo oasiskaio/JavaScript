@@ -12,7 +12,6 @@ class ControleRemoto {
   diminuirVolume(){
     this.volume -= 2;
   }
-
   // Método estático
   static trocaPilha(){
     console.log('ok, vou trocar');
