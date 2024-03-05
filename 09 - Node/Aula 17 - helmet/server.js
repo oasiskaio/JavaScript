@@ -1,16 +1,9 @@
 require('dotenv').config();
 const express = require('express');
-const app = express();
-const mongoose = require('mongoose')
-
-mongoose.connect(process.env.CONNECTIONSTRING)
-  .then(() => { 
-    console.log('Conectei a base de dados')
-    app.emit('pronto')
-  })
-  .catch(e => console.log(e));
-
 const session = require('express-session');
+const app = express();
+
+const mongoose = require('mongoose')
 const MongoStore = require('connect-mongo');
 const flash = require('connect-flash');
 
@@ -19,11 +12,15 @@ const path = require('path');
 const helmet = require('helmet');
 const csrf = require('csurf');
 
-app.use(helmet());
+
+mongoose.connect(process.env.CONNECTIONSTRING)
+  .then(() => { 
+    console.log('Conectei a base de dados')
+    app.emit('pronto')
+  })
+  .catch(e => console.log(e));
 
 const { middlewareGlobal, checkCsrfError, csrfMiddleware } = require("./src/middlewares/middleware");
-app.use( express.urlencoded( { extended: true } ));
-app.use(express.static(path.resolve(__dirname, 'public')))
 
 const sessionOptions = session({
   secret: 'testeClienteConexao',
@@ -36,14 +33,16 @@ const sessionOptions = session({
   }
 })
 
-app.use(sessionOptions)
-app.use(flash(
+app.use(helmet());
+app.use( express.urlencoded( { extended: true } ));
+app.use(express.json())
+app.use(express.static(path.resolve(__dirname, 'public')))
 
-))
+app.use(sessionOptions)
+app.use(flash(   ))
 app.set('views', path.resolve(__dirname, 'src', 'views'))
 app.set('view engine', 'ejs');
 
-// é possivel colocar uma unica rota para usar esse middleware
 app.use(csrf());
 app.use(middlewareGlobal);
 app.use(csrfMiddleware)
