@@ -2,7 +2,7 @@
 Tente(try) executar esse codigo, caso ocorra erro
 cairá no bloco catch
 */
-
+let VarivavelnaoExiste = 'ola'
 try {
     console.log(VarivavelnaoExiste)
 } catch(err) {
