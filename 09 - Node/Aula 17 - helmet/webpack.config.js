@@ -15,7 +15,7 @@ module.exports = {
         loader: 'babel-loader',
         options: {
           presets: ['@babel/env']
-        }
+         }
       }
     },  {
       test: /\.css$/,
