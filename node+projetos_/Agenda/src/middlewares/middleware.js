@@ -1,13 +1,16 @@
 // middlewares são funçõs que tem acesso ao objeto req res e next
 exports.middlewareGlobal = (req, res, next) => {
-    res.locals.umaVariavelLocal = "Esta é o valor da variavel local"
+    res.locals.erros = req.flash('errors');
+    res.locals.success = req.flash('success');
+    res.locals.user = req.session.user;
     next()
 };
 
 exports.checkCsrfError = (err, req, res, next) => {
-    if(err && 'EBADCSRFTOKEN' === err.code) {
-      return res.render("include/404");
+    if(err) {
+      return res.render("includes/404");
     }
+    next()
 }
 // Essa variavel vai estar diponivel dentro de todas as views
 exports.csrfMiddleware = (req, res, next) => {
