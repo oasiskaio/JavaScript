@@ -1,6 +1,6 @@
 // middlewares são funçõs que tem acesso ao objeto req res e next
 exports.middlewareGlobal = (req, res, next) => {
-    res.locals.erros = req.flash('errors');
+    res.locals.errors = req.flash('errors');
     res.locals.success = req.flash('success');
     res.locals.user = req.session.user;
     next()

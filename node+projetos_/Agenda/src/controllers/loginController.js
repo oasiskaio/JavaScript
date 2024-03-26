@@ -1,54 +1,49 @@
 const Login = require('../models/LoginModel');
 
 exports.index = (req, res, next) => {
-    if(req.session.user) return res.render('login-logado')
+    console.log(req.session.user)
+    if(req.session.user) return res.render('login_logado')
     return res.render('login');
 }
 
 exports.register = async function(req, res){
-     try{
+    try{
         const login = new Login(req.body)
         await login.register();
         if(login.errors.length > 0){
-                req.flash('erros', login.errors);
+                req.flash('errors', login.errors);
                 req.session.save(function(){
-                   return res.redirect('back');
+                   return res.redirect('index');
                 });
-                return;
             }
         req.flash('success', 'Usuário criado com sucesso.');
         req.session.save(function(){
-            return res.redirect('back');
+            return res.redirect('index');
         });
-        return res.send(login.user);
-
+        return;
     }catch(e){
         console.log(e)
         return res.render('includes/404')
     }
-    
-
-    
 }
-
 
 exports.login = async function(req, res){
     try{
        const login = new Login(req.body)
-       await login.login();
+       await login.Login();
        if(login.errors.length > 0){
-               req.flash('erros', login.errors);
+               req.flash('errors', login.errors);
                req.session.save(function(){
-                  return res.redirect('back');
+                  return res.redirect('index');
                });
                return;
-           }
+        }
+
        req.flash('success', 'Você entrou no sistema');
-       req.session.user = login.user
+       req.session.user = login.user;
        req.session.save(function(){
-           return res.redirect('back');
+           return res.redirect('index');
        });
-       return res.send(login.user);
 
    }catch(e){
        console.log(e)
@@ -57,6 +52,6 @@ exports.login = async function(req, res){
 }
 
 exports.logout = function(req, res) {
-   req.session.destrou();
-   res.redirect('/')
+   req.session.destroy();
+   res.redirect('back')
 }
