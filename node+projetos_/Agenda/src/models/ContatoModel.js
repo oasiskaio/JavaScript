@@ -2,40 +2,74 @@ const mongoose = require('mongoose')
 const validator = require('validator')
 
 const ContatoSchema = new mongoose.Schema({
-    titulo: { type: String, require: true},
-    descricao: String
+    nome: {type: String, require: true},
+    sobrenome: {type: String, require: false, default:''},
+    email: {type: String, require: false, default: ''},
+    telefone: {type: String, require: false, default:''},
+    criadoEm: { type: Date, default: Date.now}
 });
 
-const ContatoModel = mongoose.model('Home', ContatoSchema);
+const ContatoModel = mongoose.model('contato', ContatoSchema);
 
 function Contato(body){
     this.body = body;
     this.errors = [];
-    this.contato = null;
+    this.contatoUser = null;
 }
 
-Contato.prototype.register = function(){
-    this.valida()
+Contato.buscaPorId = async function(id){
+   if(typeof id !== 'string') return; 
+   const user = await ContatoModel.findById(id);
+   return user;
+}
+
+
+Contato.prototype.register = async function(){
+    this.valida();
+    if(this.errors.length > 0) return;
+    this.contatoUser = await ContatoModel.create(this.body);
 }
 
 
 Contato.prototype.valida = function(){
     this.cleanUp();
-    if(!validator.isEmail(this.body.email)) this.errors.push('e-mail inválido')
+    if(!this.body.email) this.errors.push('Nome é um campo obrigatório.');
+    if(this.body.email && !validator.isEmail(this.body.email)) this.errors.push('e-mail inválido');
+    if(!this.body.email && !this.body.email){
+        this.errors.push('Pelo menos um contato precisa ser enviado: e-mail ou telefone.')
+    }
     
   }
 Contato.prototype.cleanUp = function(){
    for(const key in this.body){
        if(typeof this.body[key] !== 'string'){
            this.body[key] = '';
-       }
-   } 
+    }} 
    this.body = {
+       nome: this.body.nome,
+       sobrenome: this.body.sobrenome,
        email: this.body.email,
-       password: this.body.password
+       telefone: this.body.telefone
    }
 }
 
+Contato.prototype.edit = async function(id){
+    if(typeof id !== 'string') return;
+    this.valida()
+    if(this.errors.length > 0) return;
+    this.contatoUser = await ContatoModel.findByIdAndUpdate(id, this.body, {new: true});
+}
 
+Contato.buscaContatos = async function(){
+    const contatos = await ContatoModel.find()
+    .sort({criadoEm: -1});
+    return contatos;
+ }
 
-module.exports = ContatoModel;
+ Contato.delete = async function(id){
+    if(typeof id !== 'string') return;
+    const contato = await ContatoModel.findOneAndDelete({_id: id})
+    return contato;
+ }
+
+module.exports = Contato;
